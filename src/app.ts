@@ -1,7 +1,12 @@
 import express from "express";
+import config from "config";
+import connect from "./utils/connect";
 
 const app = express();
 
-app.listen(1337, () => {
+const port = config.get<number>("port");
+
+app.listen(port, async () => {
   console.log("Connected");
+  await connect();
 });
